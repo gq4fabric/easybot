@@ -22,7 +22,7 @@ find_package(ament_cmake_ros REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_library(Easybot src/Easybot.cpp)
+add_library(Easybot src/main.cpp)
 target_include_directories(Easybot PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
