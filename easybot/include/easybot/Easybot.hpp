@@ -1,8 +1,6 @@
 #ifndef EASYBOT__EASYBOT_HPP_
 #define EASYBOT__EASYBOT_HPP_
 
-#include "easybot/visibility_control.h"
-
 /////////////////Node declaration ////////////////////////////////////////////////
 #define INITIAL_BGN() rclcpp::Node::SharedPtr Init(){
 #define INITIAL_END() return shared_from_this();}
