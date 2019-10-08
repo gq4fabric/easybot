@@ -1,0 +1,59 @@
+INLINE=1 SHOW_CODE=1 SAVE_CODE=0 COLCON=0 RUNEXE=0
+source ezb.sh 
+all_in_one(){
+#mk_hpp_prj easybot easybot
+#mk_msg_prj tello_msgs "FlightData TelloResponse"
+#mk_msg_prj qq_msg Contact
+#mk_srv_prj tello_srvs TelloAction
+#mk_srv_prj qq_srv AddTwoFloats
+#mk_cpp_prj two_nodes "easybot rclcpp qq_eb_msg qq_eb_srv" two_nodes
+
+req="easybot rclcpp sensor_msgs OpenCV" 
+includes=("easybot/easybot.hpp" "opencv2/opencv.hpp" "opencv2/imgproc/imgproc.hpp" "opencv2/highgui/highgui.hpp")
+opts=("TIMER,tm,80" "TIMESOURCE,ts,clk" "Pub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp")
+myImpl="decl cons timer_tm glob sub_image"
+mk_all ipub
+req="easybot rclcpp sensor_msgs OpenCV" 
+includes=("easybot/easybot.hpp" "opencv2/opencv.hpp" "opencv2/imgproc/imgproc.hpp" "opencv2/highgui/highgui.hpp")
+opts=("TIMER,tm,80" "TIMESOURCE,ts,clk" "Sub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp"\
+	"Pub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp")
+myImpl="decl cons glob timer_tm sub_image"
+mk_all ipubsub
+req="easybot rclcpp sensor_msgs OpenCV" 
+includes=("easybot/easybot.hpp" "opencv2/opencv.hpp" "opencv2/imgproc/imgproc.hpp" "opencv2/highgui/highgui.hpp")
+opts=("TIMER,tm,80" "TIMESOURCE,ts,clk" "Pub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp")
+myImpl="decl cons timer_tm glob sub_image"
+mk_all ipub 
+req="easybot rclcpp sensor_msgs OpenCV" 
+includes=("easybot/easybot.hpp" "opencv2/opencv.hpp" "opencv2/imgproc/imgproc.hpp" "opencv2/highgui/highgui.hpp")
+opts=("TIMER,tm,80" "TIMESOURCE,ts,clk" "Sub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp" \
+      "Pub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp")
+myImpl="decl cons timer_tm glob sub_image"
+mk_all ipubsub 
+req="easybot rclcpp sensor_msgs OpenCV" 
+includes=("easybot/easybot.hpp" "opencv2/opencv.hpp" "opencv2/imgproc/imgproc.hpp" "opencv2/highgui/highgui.hpp")
+opts=( "Sub,image,sensor_msgs::msg::Image,sensor_msgs/msg/image.hpp")
+myImpl="decl cons timer_tm glob sub_image"
+mk_all isub 
+req="easybot rclcpp sensor_msgs"
+includes=("easybot/easybot.hpp")
+opts=("TIMER,tm,20" "TIMESOURCE,ts,clock"  "Pub,joint_states,sensor_msgs::msg::JointState,sensor_msgs/msg/joint_state.hpp")
+myImpl="decl cons timer_tm glob "
+mk_all joint_states
+req="easybot rclcpp sensor_msgs"
+includes=("easybot/easybot.hpp")
+opts=("TIMER,tm,1000" "TIMESOURCE,ts,clock" "Pub,scan,sensor_msgs::msg::LaserScan,sensor_msgs/msg/laser_scan.hpp")
+myImpl="decl cons timer_tm glob "
+mk_all laser
+req="easybot rclcpp nav_msgs"
+includes=("easybot/easybot.hpp" "rclcpp/clock.hpp" "rclcpp/time_source.hpp")
+opts=("TIMER,tm,10" "TIMESOURCE,ts,clock" "Pub,map,nav_msgs::msg::OccupancyGrid,nav_msgs/msg/occupancy_grid.hpp")
+myImpl="decl cons timer_tm glob sub_image"
+mk_all mapserver
+}
+COLCON=0;INLINE=1; all_in_one 
+#INLINE=0; all_in_one > exl.cpp
+#decl|//your declarations here...
+#cons|//your constructions here...
+#glob|//your global codes here...
+#timer_tm|//your timer codes here...
