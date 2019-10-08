@@ -1,11 +1,11 @@
 INLINE=1 SHOW_CODE=1 SAVE_CODE=0 COLCON=0 RUNEXE=0
 source ezb.sh 
 all_in_one(){
-#mk_hpp_prj easybot easybot
-#mk_msg_prj tello_msgs "FlightData TelloResponse"
-#mk_msg_prj qq_msg Contact
-#mk_srv_prj tello_srvs TelloAction
-#mk_srv_prj qq_srv AddTwoFloats
+mk_hpp_prj easybot easybot
+mk_msg_prj tello_msgs "FlightData TelloResponse"
+mk_msg_prj qq_msg Contact
+mk_srv_prj tello_srvs TelloAction
+mk_srv_prj qq_srv AddTwoFloats
 #mk_cpp_prj two_nodes "easybot rclcpp qq_eb_msg qq_eb_srv" two_nodes
 
 req="easybot rclcpp sensor_msgs OpenCV" 
@@ -51,7 +51,7 @@ opts=("TIMER,tm,10" "TIMESOURCE,ts,clock" "Pub,map,nav_msgs::msg::OccupancyGrid,
 myImpl="decl cons timer_tm glob sub_image"
 mk_all mapserver
 }
-COLCON=0;INLINE=1; all_in_one 
+COLCON=1;INLINE=1; all_in_one 
 #INLINE=0; all_in_one > exl.cpp
 #decl|//your declarations here...
 #cons|//your constructions here...
