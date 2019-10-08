@@ -98,7 +98,6 @@ ToCPP() {
 	implement_nod_bgn; for i in $*; do init `echo $i | sed 's/,/ /g'`; done; implement_nod_end
 	my_node_bgn 
 		my_declares
-		#f1=(declare_constructor implement_constructor) f2=(exline_declare inline_implement)
 		f1=(declare_constructor implement_constructor) f2=(exline_declare _implement)
 		`echo ${f1[$INLINE]}`;for i in $*; do `echo ${f2[$INLINE]}` `echo $i|sed 's/,/ /g'`;done;
 	my_node_end
