@@ -53,7 +53,7 @@ timer_implement(){
 }
 _implement() {
 	if [ $1 = "TIMER" ];then timer_implement; fi
-	f1=(implement_while_declare implement_only)
+	f1=(implement_only implement_while_declare)
 	if [ $# -eq 4 ]; then
 		if [ $1 = "Sub" ]; then cod=sub_${2};`echo ${f1[$INLINE]}` SUBSCRIPTION_IMPL_BGN ${2} ${3}; fi
 		if [ $1 = "Clt" ]; then cod=rsp_${2};`echo ${f1[$INLINE]}` RESPONSE_IMPL_BGN ${2} ${3}; fi
