@@ -107,7 +107,7 @@ ToCPP() {
 }
 snippet_bgn(){ for i in $myImpl; do grep "^#$i" $0 |sed "s/#$i|//g" >$i;done; }
 snippet_end(){ for i in $myImpl; do rm -rf $i; done; }
-clarify(){_x1=$1;_y1=${_x1#*/};_z1=${_y1%.*};my_prj=$_z1;my_cpp=$_z1;exe=./${prefix}$my_prj/build/${prefix}${my_prj}/$my_cpp;}
+clarify(){ _x1=$1 _y1=${_x1#*/} _z1=${_y1%.*} my_prj=$_z1 my_cpp=$_z1 exe=./${prefix}$my_prj/build/${prefix}${my_prj}/$my_cpp;}
 mk_all(){
 	clarify $1 && unset nOpt
 	for i in ${opts[@]} ;do nOpt="$nOpt $i"; done
